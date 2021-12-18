@@ -1,5 +1,5 @@
 import { ListItemFeedback, ListFeedback, Button, SectionOfFeedbackOption  } from "./styled/FeedbackOption.styled";
-
+import PropTypes from "prop-types";
 
 const FeedbackOptions = ({ options, onLeaveFeedback}) => {
 
@@ -8,10 +8,8 @@ const FeedbackOptions = ({ options, onLeaveFeedback}) => {
         <ListFeedback>
             {options.map((option) => {
               return (
-                  <ListItemFeedback>
+                  <ListItemFeedback key={option}>
                     <Button
-            
-                        key={option}
                         onClick={() => onLeaveFeedback(option)
             }
           >
@@ -24,5 +22,12 @@ const FeedbackOptions = ({ options, onLeaveFeedback}) => {
     </SectionOfFeedbackOption >
 )
 }
+
+FeedbackOptions.protoTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback:PropTypes.func.isRequired
+}
+
+
 
 export default FeedbackOptions;
